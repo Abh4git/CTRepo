@@ -20,9 +20,9 @@ jobs:
     - name: Install dependencies
       run: dotnet restore digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj 
     - name: Install Nuget 1  
-      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Logging
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Logging -v 2.1.1
     - name: Install Nuget 2  
-      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Logging.Console
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Logging.Console -v 2.1.1
     - name: Install Nuget 3  
       run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Identity.Client    
     - name: Install Nuget 4  
