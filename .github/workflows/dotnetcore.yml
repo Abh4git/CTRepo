@@ -19,6 +19,22 @@ jobs:
         dotnet-version: 2.2.110
     - name: Install dependencies
       run: dotnet restore digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj 
+    - name: Install Nuget 1  
+      run: dotnet add package Microsoft.Extensions.Logging
+    - name: Install Nuget 2  
+      run: dotnet add package Microsoft.Extensions.Logging.Console
+    - name: Install Nuget 3  
+      run: dotnet add package Microsoft.Identity.Client    
+    - name: Install Nuget 4  
+      run: dotnet add package Microsoft.Extensions.Configuration.Json
+    - name: Install Nuget 5  
+      run: dotnet add package Microsoft.Extensions.Configuration
+    - name: Install Nuget 6  
+      run: dotnet add package Microsoft.Extensions.Configuration.Binder            
+    - name: Install Nuget 7  
+      run: dotnet add package Newtonsoft.Json      
+    - name: Install Nuget 8  
+      run: dotnet add package YamlDotNet     
     - name: Build
       run: dotnet build digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj --configuration Release --no-restore
     - name: Test
