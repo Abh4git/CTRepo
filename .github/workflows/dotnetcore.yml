@@ -16,10 +16,10 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.101
+        dotnet-version: 2.2.110
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build /digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test /digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/tests/ctwintest/ctwintest.csproj --no-restore --verbosity normal
