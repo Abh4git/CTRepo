@@ -1,0 +1,44 @@
+- name: PlantSite
+  type: Venue
+  resources:
+  - type: IoTHub
+  spaces:
+  - name: Floor 1
+    type: Floor
+    spaces:
+    - name: Control Zone A
+      type: Area
+    - name: Control Panel B
+      type: Room
+      subType: ConferenceRoom
+    - name: Control Panel A
+      type: Room
+      subType: FocusRoom
+      devices:
+      - name: FlowController A1
+        hardwareId: 1234567890AB
+        sensors:
+        - dataType: Level
+          hardwareId: SAMPLE_SENSOR_LEVEL
+        - dataType: ValvePosition
+          hardwareId: SAMPLE_SENSOR_ValvePosition
+#        - dataType: Temperature
+#          hardwareId: SAMPLE_SENSOR_TEMPERATURE
+      matchers:
+      - name: Matcher Level A1
+        dataTypeValue: Level
+      - name: Matcher ValvePosition A1
+        dataTypeValue: ValvePosition
+#      - name: Matcher Temperature
+#        dataTypeValue: Temperature
+      userdefinedfunctions:
+      - name: Level Processor
+        matcherNames:
+        - Matcher Level A1
+        - Matcher ValvePosition A1
+#        - Matcher Temperature
+        script: actions/userDefinedFunctions/availability.js
+      roleassignments:
+      - roleId: 98e44ad7-28d4-4007-853b-b9968ad132d1 # System Role: SpaceAdministrator
+        objectName: Level Processor
+        objectIdType: UserDefinedFunctionId
