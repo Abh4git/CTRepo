@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 2.2.110
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj 
     - name: Build
       run: dotnet build digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj --configuration Release --no-restore
     - name: Test
