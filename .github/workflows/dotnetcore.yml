@@ -1,0 +1,41 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.110
+    - name: Install dependencies
+      run: dotnet restore digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj 
+    - name: Install Nuget 1  
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Logging
+    - name: Install Nuget 2  
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Logging.Console
+    - name: Install Nuget 3  
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Identity.Client    
+    - name: Install Nuget 4  
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Configuration.Json
+    - name: Install Nuget 5  
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Configuration
+    - name: Install Nuget 6  
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Microsoft.Extensions.Configuration.Binder            
+    - name: Install Nuget 7  
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package Newtonsoft.Json      
+    - name: Install Nuget 8  
+      run: dotnet add digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj package YamlDotNet     
+    - name: Build
+      run: dotnet build digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/occupancyQuickstart.csproj --configuration Release --no-restore
+    - name: Test
+      run: dotnet test digital-twins-samples-csharp-master/digital-twins-samples-csharp-master/occupancy-quickstart/src/tests/ctwintest/ctwintest.csproj --no-restore --verbosity normal
